@@ -149,6 +149,7 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
 }
 
 .logo {
@@ -187,8 +188,15 @@ ul {
 /* Mobile Menu Toggle */
 .mobile-menu-toggle {
     display: none;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     cursor: pointer;
+    color: var(--color-secondary);
+    padding: 0.5rem;
+    z-index: 1001;
+}
+
+.mobile-menu-toggle:hover {
+    color: var(--color-primary);
 }
 
 /* Hero Section */
@@ -211,12 +219,19 @@ ul {
     color: var(--color-secondary);
 }
 
-.hero-content p {
-    font-size: 1.125rem;
-    color: var(--color-text-muted);
-    margin-bottom: var(--spacing-lg);
-    max-width: 90%;
-}
+    .hero-content p {
+        font-size: 1.125rem;
+        color: var(--color-text-muted);
+        margin-bottom: var(--spacing-lg);
+        max-width: 90%;
+    }
+
+    @media (max-width: 768px) {
+        .hero-content p {
+            max-width: 100%;
+            font-size: 1rem;
+        }
+    }
 
 .hero-buttons {
     display: flex;
@@ -423,229 +438,82 @@ ul {
         font-size: 2.5rem;
     }
 
-    .hero-image img {
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-lg);
-        /* Soft vignette effect handled by image generation, but adding subtle overlay */
+    .hero-content p {
+        max-width: 100%;
+        font-size: 1rem;
     }
 
-    /* Trending Section */
-    .trending {
-        padding: var(--spacing-xl) 0;
-    }
-
-    .card-list {
-        display: flex;
-        gap: var(--spacing-md);
-        overflow-x: auto;
-        padding-bottom: var(--spacing-md);
-        scrollbar-width: thin;
-    }
-
-    .card {
-        background: var(--color-surface);
-        border-radius: var(--radius-md);
-        box-shadow: var(--shadow-sm);
-        min-width: 300px;
-        flex: 0 0 auto;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-
-    .card:hover {
-        transform: translateY(-5px);
-        box-shadow: var(--shadow-md);
-    }
-
-    .card-image {
-        height: 180px;
-        overflow: hidden;
-    }
-
-    .card-image img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
-    }
-
-    .card:hover .card-image img {
-        transform: scale(1.05);
-    }
-
-    .card-content {
-        padding: var(--spacing-md);
-    }
-
-    .chip {
-        display: inline-block;
-        background-color: rgba(255, 153, 51, 0.15);
-        /* Light Saffron */
-        color: #d37400;
-        padding: 0.25rem 0.75rem;
-        border-radius: var(--radius-full);
-        font-size: 0.75rem;
-        font-weight: 600;
-        margin-bottom: var(--spacing-xs);
-        text-transform: uppercase;
-    }
-
-    .card-title {
-        font-size: 1.25rem;
-        margin-bottom: var(--spacing-xs);
-    }
-
-    .card-meta {
-        font-size: 0.85rem;
-        color: var(--color-text-muted);
-    }
-
-    /* Categories Chips */
-    .categories-browse {
-        padding: var(--spacing-lg) 0;
-        background-color: #fff;
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
-        text-align: center;
-    }
-
-    .category-pills {
-        display: flex;
+    .hero-buttons {
         justify-content: center;
         flex-wrap: wrap;
+    }
+
+    nav {
+        position: relative;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--color-surface);
+        padding: var(--spacing-md);
+        box-shadow: var(--shadow-md);
+        z-index: 999;
+        margin-top: var(--spacing-xs);
         gap: var(--spacing-sm);
-        margin-top: var(--spacing-sm);
     }
 
-    .pill {
-        padding: 0.5rem 1.5rem;
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        width: 100%;
+    }
+
+    .nav-links a {
+        display: block;
+        padding: var(--spacing-sm);
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .nav-links a:hover {
         background-color: var(--color-bg);
-        border: 1px solid var(--color-border);
-        border-radius: var(--radius-full);
-        font-weight: 500;
-        transition: all 0.2s;
+        padding-left: var(--spacing-md);
     }
 
-    .pill:hover {
-        background-color: var(--color-primary);
-        color: white;
-        border-color: var(--color-primary);
+    .mobile-menu-toggle {
+        display: block;
     }
 
-    /* Featured Grid */
-    .featured {
-        padding: var(--spacing-xl) 0;
+    .header-inner {
+        flex-wrap: wrap;
     }
 
     .grid-3 {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-        gap: var(--spacing-md);
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
     }
 
-    .featured-card {
-        position: relative;
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        aspect-ratio: 16/9;
+    .section-title {
+        font-size: 1.5rem;
     }
 
-    .featured-card img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transition: transform 0.5s ease;
+    .card-list {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
     }
 
-    .featured-overlay {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
-        padding: var(--spacing-md);
-        color: white;
-        transform: translateY(20px);
-        opacity: 0;
-        transition: all 0.3s ease;
-    }
-
-    .featured-card:hover .featured-overlay {
-        transform: translateY(0);
-        opacity: 1;
-    }
-
-    .featured-card:hover img {
-        transform: scale(1.05);
-    }
-
-    .featured-title {
-        color: white;
+    .categories-browse h3 {
         font-size: 1.25rem;
-        margin-bottom: 0.25rem;
-    }
-
-    /* Footer */
-    .site-footer {
-        background-color: var(--color-secondary);
-        color: white;
-        padding: var(--spacing-xl) 0;
-        text-align: center;
     }
 
     .footer-links {
-        display: flex;
-        justify-content: center;
-        gap: var(--spacing-md);
-        margin-bottom: var(--spacing-md);
-    }
-
-    .footer-links a {
-        color: #aaa;
-    }
-
-    .footer-links a:hover {
-        color: var(--color-accent);
-    }
-
-    /* Responsive */
-    @media (max-width: 768px) {
-        .hero-grid {
-            grid-template-columns: 1fr;
-            text-align: center;
-        }
-
-        .hero-content h1 {
-            font-size: 2.5rem;
-        }
-
-        .hero-buttons {
-            justify-content: center;
-        }
-
-        .nav-links {
-            display: none;
-            flex-direction: column;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            background-color: var(--color-surface);
-            padding: var(--spacing-md);
-            box-shadow: var(--shadow-md);
-            z-index: 999;
-        }
-
-        .nav-links.active {
-            display: flex;
-        }
-
-        .mobile-menu-toggle {
-            display: block;
-        }
-
-        .grid-3 {
-            grid-template-columns: 1fr;
-        }
+        flex-direction: column;
+        gap: var(--spacing-sm);
     }
 }
